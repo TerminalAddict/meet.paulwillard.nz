@@ -31,8 +31,8 @@
     border-color: #dee2e6;
     border-left: 1px;
     border-right: 1px;
-    border-bottom: 1px;
     border-style: outset;
+    border-bottom: 0px;
     border-top: 0px;
     padding: 5px;
 }
@@ -46,6 +46,29 @@
 }
 
 .phoneHint { font-size: 1em; display: none; padding-bottom: 5px; color: red; }
+
+.nav-tabs-bottom {
+    border-bottom: 0px;
+    border-top: 1px solid #dee2e6;
+}
+
+.nav-tabs-bottom .nav-link {
+    border: 1px solid transparent;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+}
+
+.nav-tabs-bottom .nav-item {
+    margin-bottom: unset;
+    margin-top: -1px;
+}
+
+.nav-tabs-bottom .nav-link.active {
+    border-color: unset;
+    border-color: #fff #dee2e6 #dee2e6;
+}
 
 @media (max-width: 510px) {
     .nav {
