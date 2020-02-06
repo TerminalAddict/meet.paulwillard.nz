@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {% capture styles %}
+    {% include main.css %}
+    {% endcapture %}
+    <style>
+    {{ styles | scssify }}
+    </style>
+
+    {% include seo.html %}
+
+
+    {% include favicon.html %}
+	</head>
+
+	<body>
+        {% include swipeBox.html %}
+        <div class="container-fluid p-5">
+            <div class="container" id="pwnzContainer">
+                <div class="row">
+                    <div class="col-md-2"><!----></div>
+                        <div class="col-md-8">
+		{{ content }}
+                        </div>
+                    <div class="col-md-2"><!----></div>
+                </div>
+            </div>
+        </div>
+
+
+
+<div class="container-fluid d-print-none">
+    <div class="container">
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left" data-animation="false">&uArr; Top</a>
+    </div>
+</div>
+
+
+	<script src="{{'assets/js/bundle.js' | prepend: site.baseurl}}"></script>
+	</body>
+</html>
