@@ -5,6 +5,7 @@ plugins:
 site_name: "Meet Paul Willard "
 timezone: Pacific/Auckland
 description: "Paul Willard, and why you want to meet him"
+relationship-status: "Currently single"
 sass:
     load_paths:
         - _sass
