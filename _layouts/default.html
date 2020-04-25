@@ -17,6 +17,11 @@
 	</head>
 
 	<body>
+        {% if site.disabled-text != null %}
+        <div class="container-fluid" id="disabled_overlay">
+            <h1>{{ site.disabled-text }}</h1>
+        </div>
+        {% endif %}
         {% include swipeBox.html %}
         <div class="container-fluid p-5">
             <div class="container" id="pwnzContainer">

@@ -96,3 +96,34 @@
     text-shadow: 2px 2px #000000;
     pointer-events: none;
 }
+
+
+#disabled_overlay {
+    position: fixed;
+    z-index: 95;
+    top: -4rem;
+    overflow: hidden;
+    background: rgba(0,0,0,0.9) !important;
+    height: 180vh !important;
+    width: 100% !important;
+}
+
+#disabled_overlay h1 {
+        position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: 14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    font-size: 7vw;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    pointer-events: none;
+}
