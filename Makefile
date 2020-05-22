@@ -1,17 +1,20 @@
-SHELL := /bin/bash
-NPM := /usr/bin/npm
-VENDOR_DIR = assets/vendor
-JEKYLL := ~/gems/bin/jekyll
-BUNDLE := ~/gems/bin/bundle
-JSBUNDLE_DIR := assets/js
+# Configurable variables
 REMOTE_HOST := webhost1.hosting.netent.co.nz
 REMOTE_PATH := /var/www/html/meet.paulwillard.nz
 REMOTE_USER := paul
+URL := https://meet.paulwillard.nz
+JSBUNDLE_DIR := assets/js
+VENDOR_DIR = assets/vendor
+# No other changes should be necessary 
+
+SHELL := /bin/bash
+NPM := /usr/bin/npm
+JEKYLL := ~/gems/bin/jekyll
+BUNDLE := ~/gems/bin/bundle
 
 SCRIPT_NAME := make
 VERSION := "2020-05-22 v1.0"
 
-URL := https://meet.paulwillard.nz
 NURL := $(shell node --eval "console.log(encodeURIComponent('$(URL)'))")
 NFEED := $(shell node --eval "console.log(encodeURIComponent('$(URL)/feed.xml'))")
 BLOGNAME := MeetPaulWillard
@@ -57,6 +60,7 @@ update: include-npm-deps
 
 include-npm-deps:
 	@if [ ! -d "$(VENDOR_DIR)" ]; then mkdir -p $(VENDOR_DIR); fi
+	@if [ ! -d "$(JSBUNDLE_DIR)" ]; then mkdir -p $(JSBUNDLE_DIR); fi
 	@cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
 	@cp node_modules/popper.js/dist/umd/popper.min.js $(VENDOR_DIR)
 	@cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
@@ -68,7 +72,7 @@ include-npm-deps:
 build: include-npm-deps
 	@cat $(VENDOR_DIR)/jquery.min.js <(echo) $(VENDOR_DIR)/popper.min.js <(echo) $(VENDOR_DIR)/bootstrap.min.js <(echo) assets/js/meet.pw.min.js  > $(JSBUNDLE_DIR)/bundle.js
 	@export JEKYLL_ENV=production
-	@echo "Build Production _site"
+	@echo "Building Production _site"
 	@$(BUNDLE) exec $(JEKYLL) build
 
 serve:
