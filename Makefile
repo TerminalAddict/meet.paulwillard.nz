@@ -12,9 +12,13 @@ SCRIPT_NAME := make
 VERSION := "2020-05-22 v1.0"
 
 URL := https://meet.paulwillard.nz
-NURL := `node --eval "console.log(encodeURIComponent('$(URL)'))"`
-NFEED := `node --eval "console.log(encodeURIComponent('$(URL)/feed.xml'))"`
+NURL := $(shell node --eval "console.log(encodeURIComponent('$(URL)'))")
+NFEED := $(shell node --eval "console.log(encodeURIComponent('$(URL)/feed.xml'))")
 BLOGNAME := MeetPaulWillard
+
+PINGOURL := $(shell printf "http://pingomatic.com/ping/?title=%s&blogurl=%s&rssurl=%s&chk_weblogscom=on&chk_blogs=on&chk_feedburner=on&chk_newsgator=on&chk_myyahoo=on&chk_pubsubcom=on&chk_blogdigger=on&chk_weblogalot=on&chk_newsisfree=on&chk_topicexchange=on&chk_google=on&chk_tailrank=on&chk_skygrid=on&chk_collecta=on&chk_superfeedr=on" "$(BLOGNAME)" "$(NURL)" "$(NFEED)")
+GOOGLEURL := $(shell printf "http://www.google.com/webmasters/tools/ping?sitemap=%s" "$(NFEED)")
+BINGURL := $(shell printf "http://www.bing.com/webmaster/ping.aspx?siteMap=%s" "$(NFEED)")
 
 .PHONY: all help update build server push
 
@@ -41,25 +45,27 @@ help:
 check:
 	@$(BUNDLE) exec $(JEKYLL) doctor
 
-install:
-	build
-	push
+install: build push
 
 update: include-npm-deps
 	@$(NPM) update
 	@$(NPM) install
+	@echo "Maybe run"
+	@echo " gem update"
+	@echo " sudo gem update --system"
+	@echo " $(BUNDLE) update --all"
 
 include-npm-deps:
-	if [ ! -d "$(VENDOR_DIR)" ]; then mkdir -p $(VENDOR_DIR); fi
-	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
-	cp node_modules/popper.js/dist/umd/popper.min.js $(VENDOR_DIR)
-	cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
-	cp node_modules/jquery/dist/jquery.min.map $(JSBUNDLE_DIR)
-	cp node_modules/popper.js/dist/umd/popper.min.js.map $(JSBUNDLE_DIR)
-	cp node_modules/bootstrap/dist/js/bootstrap.min.js.map $(JSBUNDLE_DIR)
+	@if [ ! -d "$(VENDOR_DIR)" ]; then mkdir -p $(VENDOR_DIR); fi
+	@cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
+	@cp node_modules/popper.js/dist/umd/popper.min.js $(VENDOR_DIR)
+	@cp node_modules/bootstrap/dist/js/bootstrap.min.js $(VENDOR_DIR)
+	@cp node_modules/jquery/dist/jquery.min.map $(JSBUNDLE_DIR)
+	@cp node_modules/popper.js/dist/umd/popper.min.js.map $(JSBUNDLE_DIR)
+	@cp node_modules/bootstrap/dist/js/bootstrap.min.js.map $(JSBUNDLE_DIR)
+	@echo "copying node files into $(VENDOR_DIR) and node map files into $(JSBUNDLE_DIR)"
 
-build:
-	include-npm-deps
+build: include-npm-deps
 	cat $(VENDOR_DIR)/jquery.min.js <(echo) $(VENDOR_DIR)/popper.min.js <(echo) $(VENDOR_DIR)/bootstrap.min.js <(echo) assets/js/meet.pw.min.js  > $(JSBUNDLE_DIR)/bundle.js
 	export JEKYLL_ENV=production
 	$(BUNDLE) exec $(JEKYLL) build
@@ -68,17 +74,15 @@ serve:
 	export JEKYLL_ENV=production
 	$(BUNDLE) exec $(JEKYLL) serve --host=0.0.0.0
 
-push:
+rsync:
 	if [ ! -d "_site" ]; then echo "_site/ directory does not exist !"; exit 0; fi
 	rsync -avz --delete _site/* $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_PATH)
-	PingSearchEngine
 
 PingSearchEngine:
-	PINGOURL := $(printf "http://pingomatic.com/ping/?title=%s&blogurl=%s&rssurl=%s&chk_weblogscom=on&chk_blogs=on&chk_feedburner=on&chk_newsgator=on&chk_myyahoo=on&chk_pubsubcom=on&chk_blogdigger=on&chk_weblogalot=on&chk_newsisfree=on&chk_topicexchange=on&chk_google=on&chk_tailrank=on&chk_skygrid=on&chk_collecta=on&chk_superfeedr=on" "$(BLOGNAME)" "$(NURL)" "$(NFEED)")
-	GOOGLEURL := $(printf "http://www.google.com/webmasters/tools/ping?sitemap=%s" "$(NFEED)")
-	BINGURL := $(printf "http://www.bing.com/webmaster/ping.aspx?siteMap=%s" "$(NFEED)")
 	@echo "Pinging ping-o-matic, Google, and Bing"
-	@echo 'curl --silent $PINGOURL > /dev/null'
-	@echo 'curl --silent $GOOGLEURL > /dev/null'
-	@echo 'curl --silent $BINGURL > /dev/null'
+	@echo 'curl --silent $(PINGOURL) > /dev/null'
+	@echo 'curl --silent $(GOOGLEURL) > /dev/null'
+	@echo 'curl --silent $(BINGURL) > /dev/null'
+
+push: rsync PingSearchEngine
 
