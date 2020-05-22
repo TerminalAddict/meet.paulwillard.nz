@@ -14,7 +14,7 @@ sass:
         - assets/css
         - assets/vendor
     style: compressed
-exclude: [node_modules, Gemfile, package.json, package-lock.json, .gitignore, README.md, ctl.sh, sublime_text.lia, pphp, assets/php/2018-php.paulwillard.nz]
+exclude: [node_modules, Gemfile, package.json, package-lock.json, .gitignore, README.md, ctl.sh, sublime_text.lia, pphp, assets/php/2018-php.paulwillard.nz, Makefile]
 jekyll-minifier:
     exclude: 'atom.xml'
     preserve_php: true                # Default: false

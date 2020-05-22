@@ -22,7 +22,7 @@ BINGURL := $(shell printf "http://www.bing.com/webmaster/ping.aspx?siteMap=%s" "
 
 .PHONY: all help update build server push
 
-all : help
+all : install
 
 help:
 	@echo 'Version $(VERSION) '
@@ -66,23 +66,24 @@ include-npm-deps:
 	@echo "copying node files into $(VENDOR_DIR) and node map files into $(JSBUNDLE_DIR)"
 
 build: include-npm-deps
-	cat $(VENDOR_DIR)/jquery.min.js <(echo) $(VENDOR_DIR)/popper.min.js <(echo) $(VENDOR_DIR)/bootstrap.min.js <(echo) assets/js/meet.pw.min.js  > $(JSBUNDLE_DIR)/bundle.js
-	export JEKYLL_ENV=production
-	$(BUNDLE) exec $(JEKYLL) build
+	@cat $(VENDOR_DIR)/jquery.min.js <(echo) $(VENDOR_DIR)/popper.min.js <(echo) $(VENDOR_DIR)/bootstrap.min.js <(echo) assets/js/meet.pw.min.js  > $(JSBUNDLE_DIR)/bundle.js
+	@export JEKYLL_ENV=production
+	@echo "Build Production _site"
+	@$(BUNDLE) exec $(JEKYLL) build
 
 serve:
 	export JEKYLL_ENV=production
 	$(BUNDLE) exec $(JEKYLL) serve --host=0.0.0.0
 
 rsync:
-	if [ ! -d "_site" ]; then echo "_site/ directory does not exist !"; exit 0; fi
-	rsync -avz --delete _site/* $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_PATH)
+	@if [ ! -d "_site" ]; then echo "_site/ directory does not exist !"; exit 0; fi
+	@rsync -avz --delete _site/* $(REMOTE_USER)@$(REMOTE_HOST):$(REMOTE_PATH)
 
 PingSearchEngine:
 	@echo "Pinging ping-o-matic, Google, and Bing"
-	@echo 'curl --silent $(PINGOURL) > /dev/null'
-	@echo 'curl --silent $(GOOGLEURL) > /dev/null'
-	@echo 'curl --silent $(BINGURL) > /dev/null'
+	@$(shell curl --silent "$(PINGOURL)" > /dev/null)
+	@$(shell curl --silent $(GOOGLEURL) > /dev/null)
+	@$(shell curl --silent $(BINGURL) > /dev/null)
 
 push: rsync PingSearchEngine
 
