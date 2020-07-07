@@ -1,5 +1,5 @@
 ---
-layout: null
+layout: blank
 ---
 
 importScripts("/assets/js/workbox-v3.6.2/workbox-sw.js");
