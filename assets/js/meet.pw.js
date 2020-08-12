@@ -38,7 +38,7 @@ $(document).ready(function(){
         console.log('CLIENT: service worker is not supported.');
     }
     $('.nav-tabs-top a[data-toggle="tab"]').on('click', function(){
-        console.log("click top");
+        // console.log("click top");
         $('.nav-tabs-bottom a.active').removeClass('active');
         $('.nav-tabs-bottom a[href="'+$(this).attr('href')+'"]').addClass('active');
     });
