@@ -47,6 +47,7 @@
 <meta property="og:title" content="{{ page.title | default: site.site_name | markdownify | strip_html | strip_newlines | escape_once }}" />
 <meta property="og:url" content="{{ canonical_url }}" />
 <meta property="og:image" content="{{ site.url }}/assets/images/ta-bearded.png" />
+<meta property="og:image:alt" content="{{ page.title | default: site.site_name | markdownify | strip_html | strip_newlines | escape_once }} - {{ seo_description }}" />
 <meta property="og:description" content="{{ seo_description }}" />
 
 {% if site.twitter.username %}

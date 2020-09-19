@@ -70,6 +70,7 @@ include-npm-deps:
 	@echo "copying node files into $(VENDOR_DIR) and node map files into $(JSBUNDLE_DIR)"
 
 build: include-npm-deps
+	# @cd assets/js; closure-compile meet.pw.js.js
 	@cat $(VENDOR_DIR)/jquery.min.js <(echo) $(VENDOR_DIR)/popper.min.js <(echo) $(VENDOR_DIR)/bootstrap.min.js <(echo) assets/js/meet.pw.min.js  > $(JSBUNDLE_DIR)/bundle.js
 	@export JEKYLL_ENV=production
 	@echo "Building Production _site"
