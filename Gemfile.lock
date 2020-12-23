@@ -1,4 +1,21 @@
 GIT
+  remote: https://github.com/envygeeks/jekyll-assets.git
+  revision: 056d2c88719ef3b1f90967a606dd1441581dd832
+  specs:
+    jekyll-assets (4.0.0.alpha)
+      activesupport (>= 5, < 7)
+      execjs (~> 2.7)
+      extras (~> 0.2)
+      fastimage (~> 2.0, >= 1.8)
+      jekyll (>= 3.5, < 5.0)
+      jekyll-sanity (~> 1.2)
+      liquid-tag-parser (>= 1, < 3)
+      nokogiri (~> 1.10)
+      pathutil (~> 0.16)
+      sassc (>= 1.11, < 3.0)
+      sprockets (~> 4.0.beta7)
+
+GIT
   remote: https://github.com/jekyll/jekyll.git
   revision: ca03e7ab8fe956815138ca1978108d7158da3bd5
   specs:
@@ -21,6 +38,12 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.1.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
@@ -30,24 +53,19 @@ GEM
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
-    fastimage (1.8.1)
-      addressable (~> 2.3, >= 2.3.5)
+    extras (0.3.0)
+      forwardable-extended (~> 2.5)
+    fastimage (2.2.0)
     ffi (1.14.2)
     forwardable-extended (2.6.0)
-    hike (1.2.3)
     http_parser.rb (0.6.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    jekyll-assets (1.0.0)
-      fastimage (~> 1.6)
-      jekyll (>= 2)
-      mini_magick (~> 4.1)
-      sass (~> 3.2)
-      sprockets (~> 2.10)
-      sprockets-helpers
-      sprockets-sass
     jekyll-feed (0.15.1)
       jekyll (>= 3.7, < 5.0)
+    jekyll-sanity (1.6.0)
+      jekyll (>= 3.1, < 5.0)
+      pathutil (~> 0.16)
     jekyll-sass-converter (2.1.0)
       sassc (> 2.0.1, < 3.0)
     jekyll-sitemap (1.4.0)
@@ -59,55 +77,50 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (4.0.3)
+    liquid-tag-parser (2.0.2)
+      extras (~> 0.3)
+      liquid (>= 3.0, < 5.0)
     listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_magick (4.11.0)
-    multi_json (1.15.0)
+    mini_portile2 (2.4.0)
+    minitest (5.14.2)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
-    rack (1.6.13)
+    rack (2.2.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.4)
     rouge (3.26.0)
     safe_yaml (1.0.5)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sprockets (2.12.5)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-    sprockets-helpers (1.4.0)
-      sprockets (>= 2.2)
-    sprockets-sass (1.3.1)
-      sprockets (~> 2.0)
-      tilt (~> 1.1)
+    sprockets (4.0.2)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    tilt (1.4.1)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.7.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   jekyll!
-  jekyll-assets
+  jekyll-assets!
   jekyll-feed
   jekyll-sitemap
   uglifier
 
 BUNDLED WITH
-   2.1.4
+   2.2.2

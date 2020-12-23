@@ -6,7 +6,7 @@ gem "jekyll", github: "jekyll/jekyll"
 group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-feed'
-  gem 'jekyll-assets'
+  gem 'jekyll-assets', github: "envygeeks/jekyll-assets"
   gem 'uglifier'
 end
 
