@@ -9,7 +9,7 @@ workbox.setConfig({
   modulePathPrefix: "/assets/js/workbox-v6.1.2/"
 });
 
-var CACHE_NAME='{{ site.site_name | slugify }}-cache-v1';
+var CACHE_NAME='{{ site.site_name | slugify }}-cache-{{ "now" | date: "%s"  }}';
 
 // precache all mmy posts and pages + bundles.js
 workbox.precaching.precacheAndRoute([
