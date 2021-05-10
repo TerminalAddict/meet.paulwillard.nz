@@ -2,14 +2,14 @@
 layout: blank
 ---
 
-importScripts("/assets/js/workbox-v6.1.2/workbox-sw.js");
+importScripts("/assets/js/workbox-v6.1.5/workbox-sw.js");
 
 workbox.setConfig({
   debug: false,
-  modulePathPrefix: "/assets/js/workbox-v6.1.2/"
+  modulePathPrefix: "/assets/js/workbox-v6.1.5/"
 });
 
-var CACHE_NAME='{{ site.site_name | slugify }}-cache-{{ "now" | date: "%s"  }}';
+var CACHE_NAME='{{ site.site_name | slugify }}-cache';
 
 // precache all mmy posts and pages + bundles.js
 workbox.precaching.precacheAndRoute([
@@ -103,4 +103,11 @@ self.addEventListener('fetch', function(event) {
         );
       })
     );
+});
+
+self.addEventListener('message', (event) => {
+  console.log('Message received');
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    return self.skipWaiting();
+  }
 });

@@ -26,17 +26,6 @@ $(document).ready(function(){
     $('a[data-mail]').on('click', function() {
         window.location = 'mailto:' + $(this).data('mail')+'@'+$(this).data('domain') + '?subject=Somebody wants to meet you Paul.';
     });
-    // register a service worker for offline content
-    var now=Date.now();
-    if ("serviceWorker" in navigator) {
-         navigator.serviceWorker.register('/sw.js?'+now).then(function() {
-             // console.log('CLIENT: service worker registration complete.');
-            }, function () {
-             console.log('CLIENT: service worker registration failure.');
-            });
-    } else {
-        console.log('CLIENT: service worker is not supported.');
-    }
     $('.nav-tabs-top a[data-toggle="tab"]').on('click', function(){
         // console.log("click top");
         $('.nav-tabs-bottom a.active').removeClass('active');
