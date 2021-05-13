@@ -27,7 +27,10 @@ if ('serviceWorker' in navigator) {
         wb.messageSW({ type: 'SKIP_WAITING', payload: 'SKIP_WAITING' });
       },
       onReject: () => {
-        prompt.dismiss();
+        wb.addEventListener('controlling', (event) => {
+          window.location.reload();
+        });
+        wb.messageSW({ type: 'SKIP_WAITING', payload: 'SKIP_WAITING' });
       }
     });
   };
