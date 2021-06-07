@@ -72,6 +72,11 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  if (event.request.method !== 'GET') {
+    /* Only deal with GET requests */
+    console.log('WORKER: fetch event ignored.', event.request.method, event.request.url);
+    return;
+  }
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
