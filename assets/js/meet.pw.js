@@ -91,7 +91,7 @@ var svg = '<svg width="200" height="200" version="1.1" id="Layer_1" xmlns="http:
 '</svg>';
 
 var svgDataUrl = "data:image/svg+xml;base64," + btoa(svg);
-console.log('%c ', "background-image: url(" + svgDataUrl + "); padding-bottom: 100px; padding-left: 100px; margin: 20px; background-size: contain; background-position: center center; background-repeat: no-repeat;");
+console.log('%c ', "background-image: url(" + svgDataUrl + "); padding-bottom: 100px; padding-left: 100px; margin: 20px; background-size: contain; background-position: center center; background-repeat: no-repeat; line-height: 20em;");
 
 var curyear = new Date().getFullYear();
 console.log("%cAll code is copyright © Paul Willard " + curyear, "font: 2em sans-serif; color: yellow; background-color: red;");
