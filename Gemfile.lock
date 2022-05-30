@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/jekyll/jekyll.git
-  revision: 4537ccac41933e649b3471669fd42103e2693a6f
+  revision: 8896e125ef8bb32603f1ebb1cd60d560f8ea7dfa
   specs:
     jekyll (4.2.2)
       addressable (~> 2.4)
@@ -94,7 +94,7 @@ GEM
     psych (3.3.2)
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
