@@ -37,8 +37,8 @@
 <title id="pageTitle">{{ page.title }}</title>
 <meta name="description" content="{{ seo_description }}" />
 
-{% if author.name %}
-  <meta name="author" content="{{ author.name | default: author.name }}" />
+{% if author.fullname %}
+  <meta name="author" content="{{ author.fullname | default: author.fullname }}" />
 {% endif %}
 
 <meta property="og:type" content="{{ og_type }}" />
@@ -95,7 +95,7 @@
 	  "author":
 		{
 		  "@type": "Person",
-		  "name": "{{ author.name }}",
+		  "name": "{{ author.fullname }}",
           "url": "{{ site.url }}{{ author.url }}"
 		},
       "@type": "{{ og_type }}",
