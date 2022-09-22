@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/jekyll/jekyll.git
-  revision: d2c7c43c3fd3e67bf22c67d633f311194523ead8
+  revision: 7d9b6403c0d2182391d90bd57f1d02023d4b00f0
   specs:
     jekyll (4.2.2)
       addressable (~> 2.4)
@@ -40,7 +40,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.1.6.1)
+    activesupport (6.1.7)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -91,11 +91,11 @@ GEM
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    psych (3.3.2)
+    psych (3.3.3)
     public_suffix (5.0.0)
     racc (1.6.0)
     rack (2.2.4)
-    rb-fsevent (0.11.1)
+    rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.5)
@@ -112,7 +112,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unicode-display_width (2.2.0)
+    unicode-display_width (2.3.0)
     webrick (1.7.0)
     zeitwerk (2.6.0)
 
