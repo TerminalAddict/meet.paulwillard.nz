@@ -127,3 +127,9 @@
     text-shadow: 2px 2px #000000;
     pointer-events: none;
 }
+
+.phoneHint { font-size: 1em; display: none; padding-bottom: 5px; color: red; }
+
+@media (max-width: 510px) {
+     .phoneHint { display: block; }
+}
