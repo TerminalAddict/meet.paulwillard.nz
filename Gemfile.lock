@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/jekyll/jekyll.git
-  revision: 7785ef670f61e0d141207cbc1322f59c3cb20fce
+  revision: 58a1f62b2349bb477fc9999c40331cecdca577d8
   specs:
     jekyll (4.3.2)
       addressable (~> 2.4)
@@ -45,7 +45,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.1)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     colorator (1.1.0)
     concurrent-ruby (1.2.2)
@@ -56,12 +56,12 @@ GEM
     execjs (2.8.1)
     extras (0.3.0)
       forwardable-extended (~> 2.5)
-    fastimage (2.2.6)
+    fastimage (2.2.7)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
-    google-protobuf (3.22.2-x86_64-linux)
+    google-protobuf (3.23.1-x86_64-linux)
     http_parser.rb (0.8.0)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
@@ -87,7 +87,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
     minitest (5.18.0)
-    nokogiri (1.14.2-x86_64-linux)
+    nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -99,9 +99,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.5)
-    rouge (4.1.0)
+    rouge (4.1.1)
     safe_yaml (1.0.5)
-    sass-embedded (1.60.0)
+    sass-embedded (1.62.1)
       google-protobuf (~> 3.21)
       rake (>= 10.0.0)
     sassc (2.4.0)
@@ -117,7 +117,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.4.2)
     webrick (1.8.1)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   x86_64-linux
