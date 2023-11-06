@@ -9,7 +9,7 @@ function createUIPrompt(opts) {
 }
 // register a service worker for offline content
 // This code sample uses features introduced in Workbox v6.
-import {Workbox, messageSW} from '{{ site.url }}/assets/js/workbox-v6.1.5/workbox-window.prod.mjs';
+import {Workbox, messageSW} from '{{ site.url }}/assets/js/workbox-v7.0.0/workbox-window.prod.mjs';
 
 if ('serviceWorker' in navigator) {
   const wb = new Workbox('/sw.js');
