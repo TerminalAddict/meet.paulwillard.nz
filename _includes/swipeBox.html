@@ -1,9 +1,5 @@
 <div class="container-fluid p-0 m-0 w-100">
-<div id="jumboSwipeBlock" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
- {% assign count = 0 %}{% for image in site.static_files %}{% if image.path contains 'assets/images/swipePhotos' %}
- <li data-target="#jumboSwipeBlock" data-slide-to="{{ count }}" {% if count==0 %} class="active"{% endif %}><!----></li>{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
-  </ol>
+<div id="jumboSwipeBlock" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner swipeImage">
  {% assign count2 = 0 %}{% for image in site.static_files %}{% if image.path contains 'assets/images/swipePhotos' %}
     <div class="carousel-item{% if count2==0 %} active{% endif %}" style="background-image: url('{{ site.url }}/{{ image.basename | prepend: 'assets/images/swipePhotos/' | append: image.extname }}')">
@@ -12,14 +8,19 @@
         </div>
     </div>{% assign count2 = count2 | plus: 1 %}{% endif %}{% endfor %}
   </div>
-  <a class="carousel-control-prev" href="#jumboSwipeBlock" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"><!----></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#jumboSwipeBlock" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"><!----></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <div class="carousel-indicators">
+  {% assign count = 0 %}{% for image in site.static_files %}{% if image.path contains 'assets/images/swipePhotos' %}
+  <button type="button" data-bs-target="#jumboSwipeBlock" data-bs-slide-to="{{ count }}" {% if count==0 %} class="active" aria-current="true"{% endif %} aria-label="Slide {{ count }}"></button>
+  {% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#jumboSwipeBlock" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#jumboSwipeBlock" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
   <div class="current_status">{{ site.relationship-status }}</div>
 </div>
 </div>

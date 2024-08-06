@@ -26,12 +26,12 @@ $(document).ready(function(){
     $('a[data-mail]').on('click', function() {
         window.location = 'mailto:' + $(this).data('mail')+'@'+$(this).data('domain') + '?subject=Somebody wants to meet you Paul.';
     });
-    $('.nav-tabs-top a[data-toggle="tab"]').on('click', function(){
+    $('.nav-tabs-top a[data-bs-toggle="tab"]').on('click', function(){
         // console.log("click top");
         $('.nav-tabs-bottom a.active').removeClass('active');
         $('.nav-tabs-bottom a[href="'+$(this).attr('href')+'"]').addClass('active');
     });
-    $('.nav-tabs-bottom a[data-toggle="tab"]').on('click', function(){
+    $('.nav-tabs-bottom a[data-bs-toggle="tab"]').on('click', function(){
         $('.nav-tabs-top a.active').removeClass('active');
         $('.nav-tabs-top a[href="'+$(this).attr('href')+'"]').addClass('active');
         $('html, body').animate({
