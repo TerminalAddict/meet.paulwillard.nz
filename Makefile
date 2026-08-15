@@ -1,5 +1,5 @@
 # Configurable variables
-REMOTE_HOST := webhost1.hosting.netent.co.nz
+REMOTE_HOST := webhost2.hosting.netent.co.nz
 REMOTE_PATH := /var/www/html/meet.paulwillard.nz
 REMOTE_USER := paul
 URL := https://meet.paulwillard.nz
